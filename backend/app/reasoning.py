@@ -46,9 +46,10 @@ def excerpt_for(need, chunk):
     for i, heading in enumerate(paragraphs[:-1]):
         if len(heading.split()) <= 8 and terms.issubset(set(tokens(heading))):
             candidates.append(heading + '\n\n' + paragraphs[i + 1])
-    if len(candidates) < 2:
-        lines = chunk.text.splitlines()
-        candidates += ['\n'.join(lines[i:i+6]) for i in range(len(lines))]
+    # Also inspect nearby source lines together. Slide/PDF extraction often
+    # separates a heading from the sentence that explains it.
+    lines = chunk.text.splitlines()
+    candidates += ['\n'.join(lines[i:i+6]) for i in range(len(lines))]
     best = None
     pattern = definition_pattern(need)
     require_definition = (
