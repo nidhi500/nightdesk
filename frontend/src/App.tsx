@@ -5,7 +5,7 @@ import { api } from './api'
 import GroundedClaims from './GroundedClaims'
 import type { Answer, Document, Message, Source, Sprint } from './api'
 
-const examples = ['What is a class?', 'What is an array?', 'Explain encapsulation', 'Compare arrays and ArrayList']
+const examples = ['What is DBMS?', 'Explain primary keys', 'What is normalization?', 'Compare DELETE and DROP']
 const label = (value:string) => value.toLowerCase().replaceAll('_',' ')
 function Evidence({source,onClose}:{source:Source|null;onClose:()=>void}){
   const [failed,setFailed]=useState(false)
